@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/public/favicon/likelion.ico" type="image/x-icon" />
+    <link rel="icon" href="/public/favicon/likelion.svg" type="image/svg" />
+    <title>form(input) 요소</title>
+  </head>
+  <body>
+    <a href="/index.html">Index로 이동</a>
+    <h1>form(input) 요소</h1>
+    <form method="post" action="https://formspree.io/f/xeqwwbwk">
+      <fieldset>
+        <legend>사용자 정보</legend>
+        <label for="userID">이름</label>
+        <input id="userID" type="text" name="name" />
+        <label for="userEmail">이메일</label>
+        <input id="userEmail" type="text" name="email" />
+        <label for="userPwd">비밀번호</label>
+        <input id="userPwd" type="password" name="password" />
+        <button type="submit">전송</button>
+      </fieldset>
+    </form>
+  </body>
+</html>
