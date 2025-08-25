@@ -13,12 +13,18 @@
     <form method="post" action="https://formspree.io/f/xeqwwbwk">
       <fieldset>
         <legend>사용자 정보</legend>
-        <label for="userID">이름</label>
-        <input id="userID" type="text" name="name" />
-        <label for="userEmail">이메일</label>
-        <input id="userEmail" type="text" name="email" />
-        <label for="userPwd">비밀번호</label>
-        <input id="userPwd" type="password" name="password" />
+        <div>
+          <label for="userID">이름</label>
+          <input placeholder="예시)홍길동" required id="userID" type="text" name="name" />
+        </div>
+        <div>
+          <label for="userEmail">이메일</label>
+          <input placeholder="예시)seulbinim@gmail.com" required id="userEmail" type="email" name="email" />
+        </div>
+        <div>
+          <label for="userPwd">비밀번호</label>
+          <input placeholder="8자리 이상, 대문자/소문자/숫자/특수문자로 구성 필요" required pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])\S{8,}$" title="8자 이상, 대문자/소문자/숫자/특수문자를 각각 1자 이상 포함하고 공백 없이 입력" id="userPwd" type="password" name="password" />
+        </div>
         <button type="submit">전송</button>
       </fieldset>
     </form>
