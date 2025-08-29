@@ -1,0 +1,33 @@
+body {
+     margin: 20px;
+}
+
+/*CSS Nesting*/
+.likelion {
+    background-color: #ffc;
+    > ul{
+        list-style-image: url('/src/assets/thumbnail/new.png');
+    }
+/* 관례상 중첩시 한줄 빈줄*/
+/* 하위 선택자, 문맥 선택자*/
+    ul{
+        padding-left: 40px;
+
+        li{
+            margin: 10px 0;
+
+            li:first-child{
+                color: red
+            }
+        }
+        .sub-last {
+            background-color: #cff;
+
+            &:hover{
+                background-color: darkblue;
+                color: #ffff
+            }
+        }
+    }
+}
+
