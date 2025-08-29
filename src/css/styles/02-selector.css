@@ -1,0 +1,123 @@
+/* 전체 선택자 */
+* {
+  font-size: 24px;
+}
+
+/* 요소 선택자 */
+body {
+  margin: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: red;
+}
+
+p {
+  border: 2px solid blue;
+  color: gray;
+}
+
+/* 클래스 선택자 */
+.like {
+  background-color: var(--yellow);
+  border: 2px dashed green;
+}
+
+p {
+  color: black;
+}
+
+/* 아이디 선택자 */
+#lion {
+  background-color: var(--orange);
+}
+
+/* 클래스 선택자를 여러 개 조합하더라도 아이디 선택자의 스타일을 재지정 할 수 없다. */
+.a.b.c.d.e.f.g.h.i.j.like {
+  background-color: aqua;
+}
+
+/* 속성 선택자 */
+a[href^='https'] {
+  color: green;
+}
+
+/* 자손 결핣자 */
+.bootcamp p {
+  color: gray;
+}
+
+/* 자식 결합식 */
+.bootcamp > blockquote > p {
+  padding: 10px;
+}
+
+/* 선택자 그룹화 */
+a,
+h1,
+#lion {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* 가상 요소 선택자 */
+h1::before {
+  content: '멋사';
+}
+
+h1::after {
+  content: '15기';
+}
+
+p::before {
+  content: 'Open';
+  font-size: 36px;
+  color: red;
+}
+
+p::first-letter {
+  font-size: 80px;
+  font-weight: 900;
+}
+
+p::selection {
+  background-color: darkblue;
+  color: white;
+}
+
+/* 가상 클래스 */
+h1:hover {
+  background-color: pink;
+}
+
+h1:focus {
+  border: 2px dashed black;
+}
+
+a:link {
+  color: purple;
+}
+
+a:visited {
+  color: gray;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: red;
+}
+
+a:focus {
+  outline: 2px solid red;
+  outline-offset: 10px;
+}
+
+.frontend p:first-child {
+  font-size: 16px;
+}
+
+.frontend p:nth-child(2) {
+  font-size: 20px;
+  font-weight: 700;
+}
