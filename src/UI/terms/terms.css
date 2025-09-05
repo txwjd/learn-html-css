@@ -1,0 +1,71 @@
+body {
+     margin: 20px;
+}
+
+/* 컴포넌트 */
+.term {
+  --accent-color: #296897;
+  --text-size: 1rem;
+
+  display: flow-root;
+  font-size: var(--text-size);
+
+  .subject {
+    font-weight: 600;
+    color: var(--accent-color);
+    font-size: 1.2em;
+  }
+
+  .subject,
+  .description {
+    float: right;
+    width: calc(100% - 76px);
+  }
+
+  .thumbnail {
+    float: left;
+    margin-right: 16px;
+  }
+
+  .description {
+    margin-top: 10px;
+    font-size: 1em;
+  }
+}
+
+/* 레이아웃 */
+.terms {
+  --gray-700: #7a7a7a;
+  --gray-600: #cccccc;
+  --gray-500: #eeeeee;
+  --spacing: 1rem;
+
+  background: var(--gray-600) linear-gradient(var(--gray-600), var(--gray-500));
+  border: 1px solid var(--gray-700);
+  border-radius: 10px;
+  padding: var(--spacing);
+  width: 250px;
+
+  .headline {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing);
+  }
+
+  .term {
+    margin-top: calc(var(--spacing) - 4px);
+  }
+
+  & div:nth-child(odd) {
+
+    .subject,
+    .description {
+      float: left;
+    }
+
+    .thumbnail {
+      float: right;
+      margin-right: 0;
+    }
+  }
+}

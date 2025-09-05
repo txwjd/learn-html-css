@@ -1,0 +1,42 @@
+body {
+     margin: 20px;
+}
+
+/* Utility Bar */
+/* .utility-bar {
+    background: #ffc;
+    text-transform: uppercase;
+
+    li {
+        background: #cfc;
+        float: left;
+
+        span {
+            background: #fcf;
+            margin: 8px;
+        }
+
+        a {
+            background: #ccf;
+            margin: 8px;
+            text-decoration: none; 글 아래 밑줄 제거
+        }
+    } 
+} */
+
+.utility-bar {
+    text-transform: uppercase;
+    display: flow-root;
+    font-size: 0;
+    text-align: right; /* 오른쪽 정렬 */
+
+    li {
+        display: inline-block;
+    }
+
+    a, [aria-hidden="true"] {
+        display: inherit;
+        padding: 8px;
+        font-size: 1rem;
+    }
+}
