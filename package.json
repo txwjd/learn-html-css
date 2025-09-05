@@ -1,6 +1,6 @@
 {
   "scripts": {
-	"start": "live-server src --port=8080 --host=localhost --no-browser"
+	"start": "live-server . --port=8080 --host=localhost --no-browser"
 },
   "devDependencies": {
     "live-server": "^1.2.2",

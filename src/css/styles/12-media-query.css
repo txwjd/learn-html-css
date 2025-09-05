@@ -1,0 +1,32 @@
+body{
+  margin: 20px;
+}
+
+/* body 배경색상 */
+/* body{
+  background: yellow;
+}
+
+@media (min-width: 600px){
+  body{
+    background: pink;
+  }
+}
+
+@media (min-width: 800px){
+  body{
+    background: aqua;
+  }
+} */
+ /* 중첩 */
+ body {
+  background: yellow;
+
+  @media (min-width: 600px){
+    background: pink;
+  }
+
+  @media (min-width: 800px){
+    background: aqua;
+  }
+ }

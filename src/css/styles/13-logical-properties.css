@@ -1,0 +1,60 @@
+body{
+  margin: 20px;
+}
+
+/* width/height - inline-size/block-size */
+.like{
+  background: yellow;
+  /* width: 400px; */
+  inline-size: 400px;
+  /* height: 100px; */
+  block-size: 100px;
+}
+
+/* margin/padding. - top, right, bottom, left */
+.lion{
+  background: pink;
+  padding-block: 20px;
+  padding-block-start: 20px;
+  padding-block-end: 20px;
+  margin-inline: 20px;
+  margin-inline-start: 20px;
+  margin-inline-end: 20px;
+}
+
+/* float: left or right / inline-start or inline-end */
+.bootcamp{
+  background: aqua;
+
+  strong{
+    background: orange;
+    float: inline-start;
+  }
+}
+
+/* position - top, right, bottom, left / inset */
+.frontend{
+  background: lime;
+  padding: 20px;
+  position: relative;
+
+  strong{
+    background: orange;
+    position: absolute;
+    /* top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; */
+    inset: 0;
+  }
+}
+
+/* border */
+.euid{
+  background: silver;
+  padding: 10px;
+  /* border-top: 2px solid red;  */
+  border-block-start: 2px solid red;
+  /* border-bottom: 2px dashed blue;  */
+  border-block-end: 2px dashed blue;
+}
