@@ -10,6 +10,8 @@
   --gray-200: #9B9A90;
   --gray-300: #6D7478;
 
+  --red-100: #FF0000;
+
   --primary-color: var(--green-100);
   --start-color: var(--green-200);
   --end-color: var(--green-300);
@@ -22,7 +24,6 @@ body {
 
 /* logo component */
 .logo {
-    background: #ada;
     display: inline-flex;
     inline-size: min(51.25%, 230px); /* clamp (164px, 51.25%, 203px) clamp (min, mid, max)*/
 
@@ -135,4 +136,38 @@ body {
     content: 'ON';
     color: var(--green-100);
   }
+}
+
+/* text input */
+.input {
+  --size: 72px;
+
+  background: yellow;
+  block-size: var(--size);
+  display: inline-flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+
+  input {
+    inline-size: 100%;
+    block-size: 48px;
+    border: 1px solid var(--gray-200);
+    padding-inline-start: 0.5em;
+
+    &:read-only {
+      background: var(--gray-100);
+      
+    }
+  }
+
+  .error-message {
+    color: var(--red-100);
+    font-size: 0.625rem;
+    background: pink;
+    visibility: hidden;
+  }
+
+  input:user-invalid + .error-message {
+    visibility: visible;
+  }  
 }
