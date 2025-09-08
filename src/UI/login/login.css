@@ -1,0 +1,14 @@
+body {
+    margin: 20px;
+}
+
+/* logo component */
+.logo {
+    background: #ada;
+    display: inline-flex;
+    inline-size: min(51.25%, 230px); /* clamp (164px, 51.25%, 203px) clamp (min, mid, max)*/
+
+    @media (min-width: 768px) { /* @media (width >= 768px) */
+        inline-size: 230px;
+    }
+}
