@@ -1,0 +1,216 @@
+/* webcafe-layout.css
+--------------------------------------------------------------
+- 2025.09.09 by txwjd
+- grid layout test
+- mobile first. 960px 이상에서 12-col 그리드 적용
+--------------------------------------------------------------
+*/
+
+/* === Reset === */
+:root {
+    /* spacing & grid */
+    --gutter: 20px; /* 좌우 기본 여백 (mobile) */
+    --gap-mobile: 8px; /* mobile grid 간격 */
+    --gap-desktop: 16px; /* desktop grid 간격 */
+    --min-col: 62px; /*12-col grid 최소 너비 (desktop) */
+
+    /* colors */
+    --bg: #f7f7f8
+    --panel: #fff;
+    --muted: :f0f3f7;
+    --accent: #4763f2;
+    --line: #e0e6ef;
+    --text: #222;
+}
+
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.4;
+  -webkit-font-smoothing:antialiased;
+  padding: 24px; /* 예제 페이지 바깥 여백 */
+}
+
+/* 작은 화면에서 제목 등을 읽기 쉽게 */
+.container + * { margin-top: 24px; }
+
+/* =========================
+   그리드 컨테이너 (모바일 기본)
+   - 모바일(작은 화면)에서는 모든 컨텐츠가 본문(content) 영역 안에서 세로로 쌓인다.
+   - 좌/우 여백(마진)은 20px로 고정.
+   ========================= */
+.container {
+    display: grid;
+
+/* 
+    grid-template-columns:
+    - [full-start] 20px [content-start] 1fr [content-end] 20px [full-end]
+    → 전체 너비(full-start ~ full-end)를 네임드 라인으로 구분.
+    → 좌우 'gutter' 20px, 가운데 콘텐츠 1fr (가변)
+*/
+    grid-template-columns:
+        [full-start] var(--gutter) [content-start] 1fr [content-end] var(--gutter) [full-end];
+
+    /* 
+    grid-template-rows:
+    - header : 80px(고정)
+    - 콘텐츠 영역(메인 내부 아이템들이 차지할 자리) : auto로 유연하게
+    - footer : 80px(고정)
+    - 여기서는 예제용으로 중간에 5개의 자동행을 배치했지만, 내부 아이템이 auto-placement로 채워지므로
+      꼭 행을 많이 선언하지 않아도 됩니다.
+    */
+    grid-template-rows: 80px repeat(5, auto) 80px;
+
+    gap: var(--gap-mobile); /* 박스들 사이 간격 (모바일) */
+
+    /* 가시적 이해 : outline (디버그용) */
+    /* outline: 1px dashed rgba(0,0,0,0.04); */
+}
+
+/* =========================
+   기본 박스 스타일 (공통)
+   ========================= */
+.header,
+.book, .news, .board, .favorite, .twitter,
+.footer {
+  /* 기본적으로 본문(content)영역의 시작(content-start)과 끝(content-end) 사이를 차지하도록 설정.
+     명시적으로 "content-start / content-end"를 사용해서 오해를 방지.
+     (원래 예시에서 'grid-column: content;' 같은 축약을 봤는데, 명확하게 라인 시작/끝을 지정.)
+  */
+  grid-column: content-start / content-end;
+
+  padding: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 1px 0 rgba(16,24,40,0.02);
+}
+
+/* header, footer 별도 스타일 */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #ffffff, #fbfdff);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* main 안에 있는 요소들이 직접 그리드 아이템이 되도록 한다. */
+/* display: contents는 요소 자체를 '사라지게' 만들어 자식이 부모 레이아웃에 참여하도록 함.
+   - 장점: DOM 계층은 유지하면서 레이아웃에서 wrapper를 무시할 수 있음.
+   - 주의: display: contents 를 지원하지 않는 브라우저(아주 오래된 브라우저)가 있을 수 있음.
+*/
+.main {
+  display: contents;
+}
+
+/* 각 모듈(섹션) 시각 구분을 위해 라벨/타이틀 스타일 추가 */
+.book, .news, .board, .favorite, .twitter {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #111;
+}
+
+/* 즐겨찾기/트위터처럼 사이즈가 작을 수도 있는 요소의 기본 스타일 */
+.favorite { background: linear-gradient(180deg,#fff,#f7f9ff); }
+.twitter  { background: linear-gradient(180deg,#fff,#fff8f3); }
+
+/* =========================
+   데스크탑 레이아웃 (>=960px)
+   - 12컬럼 그리드로 확장
+   - 좌우 여백(1fr) + 중앙 content-start..content-end 사이에 12개의 컬럼
+   ========================= */
+@media (min-width: 960px) {
+  .container {
+    /* 왼쪽 1fr (flexible gutter), content-start ~ content-end: 12 columns, 오른쪽 1fr */
+    grid-template-columns:
+      [full-start] 1fr [content-start]
+      repeat(12, minmax(var(--min-col), 1fr))
+      [content-end] 1fr [full-end];
+
+    /* 그리드 행 자동 크기 조절 (각 섹션의 내용에 맞춰 auto) */
+    grid-auto-rows: minmax(80px, auto);
+
+    gap: var(--gap-desktop);
+
+    /* 중앙에 컨텐츠가 모이도록 수직 정렬 기본을 시작(top)으로 지정 */
+    align-items: start;
+  }
+
+  /* =========================
+     데스크탑에서의 컬럼 스팬 지정
+     - grid-column: content-start / span 4;   => content-start에서 시작해서 4컬럼 차지
+     - grid-column: span 8;                   => 자동으로 다음 가능한 컬럼 위치에서 8컬럼 차지
+     - 여기서 'span'을 사용하면 배치 순서(auto-placement)에 따라 다음 가능한 위치에 들어감.
+     ========================= */
+
+  /* 책(왼쪽 넓은 카드) : 컨텐츠 시작에서 4컬럼 차지 */
+  .book {
+    grid-column: content-start / span 4;
+  }
+
+  /* 뉴스(오른쪽 큰영역) : book 다음에 이어서 8컬럼 차지 */
+  .news {
+    grid-column: span 8;
+  }
+
+  /* 게시판 : 다음 줄에서 다시 content-start 부터 4컬럼 차지 */
+  .board {
+    grid-column: content-start / span 4;
+  }
+
+  /* 트위터 : board 다음에 6컬럼 차지 */
+  .twitter {
+    grid-column: span 6;
+  }
+
+  /* 즐겨찾기 : 주요 사이드(작은 카드) 2컬럼 차지.
+     'order' 속성은 grid에서도 auto-placement 순서에 영향을 줄 수 있으나,
+     보다 확실히 하려면 grid-row/grid-column을 명시적으로 지정하는 것이 좋음.
+  */
+  .favorite {
+    grid-column: span 2;
+    /* order: 1;  -- 필요하면 활성화: 자동배치 순서를 바꾼다. */
+  }
+
+  /* footer 는 기본적으로 전체 content 영역을 차지 */
+  .footer {
+    grid-column: content-start / content-end;
+  }
+}
+
+/* 각 카드에 간단한 반응형 hover 효과 (데스크탑에서만) */
+@media (hover: hover) and (min-width: 960px) {
+  .book:hover, .news:hover, .board:hover, .twitter:hover, .favorite:hover {
+    transform: translateY(-4px);
+    transition: transform 180ms ease;
+    box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  }
+}
+
+/* =========================
+   추가 팁(주석)
+   - grid-column: content-start / span 4;  -> content-start 라인에서 시작해서 4개의 컬럼을 점유
+   - grid-column: span 8;                  -> '현재 위치'에서 8컬럼을 점유 (auto-placement 사용)
+   - display: contents;                     -> wrapper(.main)을 layout에서 제거하고 자식들만 직접 배치
+   - minmax(62px, 1fr)                      -> 컬럼 하나가 최소 62px, 최대 가변(1fr)
+   - repeat(12, minmax(...))                -> 12컬럼 시스템 (실무에서 매우 자주 사용)
+   - gap                                   -> 컬럼/행 사이 공통 간격
+   - order 속성은 grid의 auto-placement 순서에 영향을 줄 수 있음 (flexbox와 비슷)
