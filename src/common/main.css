@@ -1,1 +1,71 @@
 /* 메인 페이지 스타일 */
+body {
+  max-width: 600px;
+  margin: 2rem auto;
+  line-height: 1.5;
+}
+.profile-card {
+  display: flex;           /* 가로 배치 */
+  align-items: center;     /* 세로 가운데 정렬 */
+  gap: 16px;               /* 이미지와 텍스트 사이 간격 */
+  padding: 16px;
+}
+
+.profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;      /* 원형 이미지 */
+  object-fit: cover;
+}
+
+.name {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bio {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+
+.section-title {
+  display: block;           /* 블록 요소로 만들어 한 줄 전체 차지 */
+  font-size: 1.5rem;        /* 글자 크기 */
+  font-weight: bold;        /* 글자 두껍게 */
+  cursor: pointer;          /* 마우스 올렸을 때 커서 모양을 포인터로 변경 */
+  padding: 0.5rem;          /* 안쪽 여백 */
+  background: 	#E6E6FA;    
+  margin: 0.5rem 0;         /* 위아래 바깥 여백 */
+  border-radius: 4px;       /* 모서리 둥글게 */
+  transition: background 0.3s; /* 배경색 변경 시 부드럽게 전환 */
+  text-align: center;       /* 글자를 가로 가운데 정렬 */
+}
+
+.section-title:hover {
+  background: #ddd;
+}
+
+.section-list {
+  max-height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 1rem;
+  list-style: none;
+  transition: max-height 0.4s ease;
+}
+
+.section-list li {
+  margin: 0.25rem 0;
+}
+
+/* 토글 ON 시 펼쳐지기 */
+#toggle-ui:checked ~ .section-list:nth-of-type(1),
+#toggle-css:checked ~ .section-list:nth-of-type(2),
+#toggle-html:checked ~ .section-list:nth-of-type(3),
+#toggle-test:checked ~ .section-list:nth-of-type(4) {
+  max-height: 1000px;
+  padding: 0.5rem 1rem;
+}

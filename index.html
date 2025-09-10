@@ -13,10 +13,15 @@
     <base href="/src/html/" target="_blank" />
   </head>
   <body>
-    <h1>HTML/CSS</h1>
-    <br />
-    <h2>UI</h2>
-    <ul>
+    <div class="profile-card">
+      <img src="/src/profile/txwjd.png" alt="장수정" class="profile-image" />
+      <h1 class="name">장수정</h1>
+      <p class="bio">멋쟁이 사자처럼 프론트엔드 부트캠프 15기 장수정 입니다.</p>
+    </div>
+    <!-- UI Section -->
+    <input type="checkbox" id="toggle-ui" hidden />
+    <label for="toggle-ui" class="section-title">〰️UI〰️</label>
+    <ul class="section-list">
       <li><a href="/src/ui/avatars/avatars.html">아바타(상태 디자인)</a></li>
       <li><a href="/src/ui/terms/terms.html">웹 관련 용어</a></li>
       <li><a href="/src/ui/utility-bar/utility-bar.html">유틸리티 바</a></li>
@@ -29,9 +34,10 @@
       <li><a href="/src/UI/webcafe-layout/webcafe-layout.html">webcafe layout</a></li>
       <li><a href="/src/UI/news/news.html">EDIYA</a></li>
     </ul>
-    <br />
-    <h2>CSS</h2>
-    <ul>
+    <!-- CSS Section -->
+    <input type="checkbox" id="toggle-css" hidden />
+    <label for="toggle-css" class="section-title">〰️CSS〰️</label>
+    <ul class="section-list">
       <li><a href="/src/css/01-css-basic.html">CSS 기초</a></li>
       <li><a href="/src/css/02-selector.html">CSS 선택자</a></li>
       <li><a href="/src/css/03-specificity.html">상속, 겹침, 우선순위</a></li>
@@ -50,11 +56,13 @@
       <li><a href="/src/css/16-gridbox.html">grid layout</a></li>
       <li><a href="/src/css/17-multi-column.html">multi column</a></li>
       <li><a href="/src/css/18-subgrid.html">subgrid</a></li>
+      <li><a href="/src/css/21-mask.html">mask</a></li>
       <li><a href="/src/css/22-light-dark.html">light or dark</a></li>
     </ul>
-    <br />
-    <h2>HTML</h2>
-    <ul>
+    <!-- HTML Section -->
+    <input type="checkbox" id="toggle-html" hidden />
+    <label for="toggle-html" class="section-title">〰️HTML〰️</label>
+    <ul class="section-list">
       <!-- 01-basic-structure.html 파일은 <base> 요소의 경로를 기준으로 연결 -->
       <li><a href="./01-basic-structure.html">HTML 기본 구조</a></li>
       <li><a href="/src/html/02-heading-paragraph.html">제목과 단락</a></li>
@@ -81,9 +89,10 @@
       <li><a href="/src/html/23-script.html">script 요소</a></li>
       <li><a href="/src/html/24-interactive-attribute.html">유저 인터렉션 속성</a></li>
     </ul>
-    <br />
-    <h2>Test</h2>
-    <ul>
+    <!-- Test Section -->
+    <input type="checkbox" id="toggle-test" hidden />
+    <label for="toggle-test" class="section-title">〰️Test〰️</label>
+    <ul class="section-list">
       <li><a href="/src/test/grid/grid.html">Grid</a></li>
     </ul>
   </body>
