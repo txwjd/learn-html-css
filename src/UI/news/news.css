@@ -1,0 +1,58 @@
+:root {
+  --white: #fff;
+  --gray: #878787;
+  --gray-dark: #14182c;
+  --blue-100: #3030e0;
+  --blue-200: #24388d;
+  --blue-300: #111166;
+
+  --start-color: var(--blue-100);
+  --end-color: var(--blue-300);
+}
+
+body {
+    margin: 20px;
+}
+
+/* EDIYA News */
+.news {
+    background: var(--blue-200);
+    color: var(--white);
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    grid-auto-rows: auto;
+    /* align-items: center; */
+    gap: 8px;
+
+    .news-title,
+    a,
+    time {
+        padding: 0.5em;
+    }
+
+    .news-list, 
+    .news-item {
+        display: contents;
+    }
+
+    /* order 로 더보기 순서 변경 */
+    /* .news-title,
+    .more {
+        order: -1;
+    } */
+
+    /* white-space, overflow, text-overflow 같이 사용해야함 */
+    a:not(.more) {
+        white-space: nowrap; /* 줄바꿈이 되지 않음 */
+        overflow: hidden; /* 넘치는 영역 숨김 */
+        text-overflow: ellipsis; /* 넘치면 말줄임표 표시 (...) */
+    }
+
+    .more {
+        grid-area : 1 / 2;
+        justify-self: end; /* x축 기준으로 끝에 정렬 */
+    }
+}
+
+
