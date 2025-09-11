@@ -45,10 +45,11 @@ body {
 }
 
 .section-title:hover {
-  background: #ddd;
+  background: #DDA0DD;
 }
 
 .section-list {
+  background: #FFE4E1;
   max-height: 0;
   overflow: hidden;
   margin: 0;
